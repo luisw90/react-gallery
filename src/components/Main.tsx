@@ -5,7 +5,7 @@ type Photo = {
     alt_description: string
   };
 
-const Main = () => {
+export const Main = () => {
     const [search, setSearch] = useState('bless')
     const [data, setData] = useState<Photo[]>([])
     const [count, setCount] = useState(1)
@@ -25,20 +25,8 @@ const Main = () => {
     }, [search, count]);
 
     return (<main>{
-        data.map((photo: Photo) => { return
-                <div className="flip-card">
-                  <div className="flip-card-inner">
-                    <div className="flip-card-front">
-                      <img className="main-container__photo" src={photo.urls.small} alt={photo.alt_description} />
-                    </div>
-                    <div className="flip-card-back">
-                      <h1>Unsplash link</h1>
-                      <p>photographer name</p>
-                      <p>photographer profile link</p>
-                    </div>
-                  </div>
-                </div>
-                )})}</main>);
+        data.map((photo: Photo) => <img className="main-container__photo" src={photo.urls.small} alt={photo.alt_description} />)
+                }</main>);
 }
 
 // const result = data.result.map((photo: Photo) => { (
@@ -55,5 +43,3 @@ const Main = () => {
 //       </div>
 //     </div>
 //     )});
-
-export default Main;
