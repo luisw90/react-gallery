@@ -6,9 +6,9 @@ type Photo = {
   };
 
 export const Main = () => {
-    const [search, setSearch] = useState('bless')
+    const [search, setSearch] = useState<string>('')
     const [data, setData] = useState<Photo[]>([])
-    const [count, setCount] = useState(1)
+    // const [count, setCount] = useState(1)
     
     // const apiCall = async (search: string, count: number) => {
     //     const photos = await fetch(`https://api.unsplash.com/search/photos?page=${count}&query=${search}&client_id=${process.env.REACT_APP_ACCESS_KEY}`);
@@ -20,7 +20,7 @@ export const Main = () => {
         fetch(`https://api.unsplash.com/search/photos?page=1&query=${search}&client_id=${process.env.REACT_APP_ACCESS_KEY}`)
           .then(response => response.json())
           .then(response => setData(response.result))
-    }, [search, count]);
+    }, [search]);
 
     const searchBar = useRef<HTMLInputElement | null>(null)
     const searchInput = () => {
@@ -29,11 +29,11 @@ export const Main = () => {
     }
     
     return (
-        <main>
+        <>
             <input ref={searchBar} type="text" />
             <button onClick={searchInput}>Search</button>
-            {data && data.map((photo: Photo) => { return <img className="main-container__photo" src={photo.urls.small} alt={photo.alt_description} />})
-        }</main>);
+            {data && console.log(search, data)/* {data && data.map((photo: Photo) => { return <img className="main-container__photo" src={photo.urls.small} alt={photo.alt_description} />})} */}
+        </>);
 }
 
 // const result = data.result.map((photo: Photo) => { (
