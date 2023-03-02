@@ -10,6 +10,11 @@ ul {
   margin: 0;
 }
 
+a {
+  text-decoration: none;
+  color: #a8cc2f;
+}
+
 .nav-container__ul {
   display: flex;
   flex-direction: row;
@@ -81,6 +86,7 @@ ul {
 
 .main-container {
   padding-inline: 100px;
+  margin-bottom: 115px;
 }
 
 .input-container__inner {
@@ -212,6 +218,9 @@ button {
 
 .flip-card-back {
   background-color: #1c1a1c;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   color: #a8cc2f;
   transform: rotateY(180deg);
   transition: border-color 0.25s;
