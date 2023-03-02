@@ -1,13 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Roboto', sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-container__ul {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-container__logo {
+  width: 50px;
+  height: 50px;
+}
+
+a {
+  text-decoration: none;
+  color: #a8cc2f;
+}
+.nav-container__github {
+  align-self: center;
+}
+
+.header-container {
+  position: sticky;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  background: #1c1a1c;
+  padding-inline: 100px;
+}
+
+.nav-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main-container {
+  padding-inline: 100px;
+}
+
+.input-container__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  height: 80px;
+  margin-bottom: 50px;
+  min-width: 40%;
+}
+
+.main-container__images {
+  display: grid;
+  grid-gap: 25px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.main-container__photo {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.main-container__buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.main-container__magnifying-glass {
+  width: 30px;
+  height: 30px;
+}
+
+.input-container__outer {
+  position: absolute;
+  top: 175px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-inline: 80px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 5px;
+  text-align: center;
+  box-shadow: 0 0 20px #3c9e1c;
+  width: 10%;
+  z-index: 99;
+  background-color: #fff;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-container__searchbar {
+  background: rgb(242, 242, 242);
+  height: 35px;
+  padding: 3px;
+  border: 0.2px solid rgb(212, 212, 212);
+  border-radius: 5px;
+  width: 100%;
+}
+
+.main-container__buttons__btn {
+  height: 35px;
+  width: 70px;
+  color: #a8cc2f;
+  background: #1c1a1c;
+  border: none;
+  border-radius: 5px;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+#prev-btn, #next-btn {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.flip-card {
+  background-color: transparent;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+}
+
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+  position: relative;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+ 
+.flip-card-front {
+  position: relative;
+  color: black;
+}
+
+.flip-card-back {
+  background-color: #1c1a1c;
+  color: #a8cc2f;
+  transform: rotateY(180deg);
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #a8cc2f;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+input[type=text] {
+  padding-left: 25px;
+}
+
+@media only screen and (max-width: 1225px) {
+  .main-container {
+    padding: 0 50px;
+  }
+  .header-container {
+    padding-inline: 50px;
+  }
+  .main-container__images {
+    display: grid;
+    grid-gap: 25px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .input-container__inner {
+    margin-bottom: 15px;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .main-container {
+    padding: 0 15px;
+  }
+  .main-container__images {
+    display: grid;
+    grid-gap: 25px;
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .input-container__inner {
+    margin-bottom: 15px;
+  }
+  .header-container {
+    padding-inline: 15px;
+  }
+  .input-container__inner {
+    width: 100%
+  }
 }
