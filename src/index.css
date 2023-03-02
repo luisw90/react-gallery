@@ -237,6 +237,41 @@ input[type=text] {
   padding-left: 25px;
 }
 
+.item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5.5%;
+
+}
+
+.item__container {
+  height: 100%;
+  display: flex;
+  justify-content: column;
+  align-items: center;
+  position: relative;
+  gap: 100px;
+}
+
+.item__img {
+  max-height: 60vh;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+
+}
+
+.item__text {
+  font-size: 1em;
+}
+
+.item__Button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
+}
+
 @media only screen and (max-width: 1225px) {
   .main-container {
     padding: 0 50px;
