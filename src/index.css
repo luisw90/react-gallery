@@ -20,17 +20,44 @@ ul {
   padding: 0;
 }
 
-.nav-container__logo {
-  width: 50px;
-  height: 50px;
+.header {
+  background-color: #1c1a1c;
+  z-index: 2;
+  position: sticky;
+  top: 0%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
-a {
-  text-decoration: none;
-  color: #a8cc2f;
+.header__logo {
+  width: 80px;
+  height: 80px;
 }
-.nav-container__github {
+
+.app {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  min-height: 100vh;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: #1c1a1c;
+}
+
+.footer__logo {
   align-self: center;
+}
+
+.footer__logo__image {
+  width: 80px;
+  height: 80px;
 }
 
 .header-container {
@@ -46,6 +73,10 @@ a {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+}
+
+.app {
+ position: relative;
 }
 
 .main-container {
