@@ -180,54 +180,10 @@ button {
   margin-bottom: 5px;
 }
 
-.flip-card {
-  background-color: transparent;
-  perspective: 1000px; /* Remove this if you don't want the 3D effect */
-}
-
-/* This container is needed to position the front and back side */
-.flip-card-inner {
-  position: relative;
-  text-align: center;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
-}
-
-/* Do an horizontal flip when you move the mouse over the flip box container */
-.flip-card:hover .flip-card-inner {
-  transform: rotateY(180deg);
-}
-
-/* Position the front and back side */
-.flip-card-front, .flip-card-back {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  -webkit-backface-visibility: hidden; /* Safari */
-  backface-visibility: hidden;
-}
- 
-.flip-card-front {
-  position: relative;
-  color: black;
-}
-
-.flip-card-back {
-  background-color: #1c1a1c;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  color: #a8cc2f;
-  transform: rotateY(180deg);
-  transition: border-color 0.25s;
-}
 button:hover {
   border-color: #a8cc2f;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -307,4 +263,93 @@ input[type=text] {
   .input-container__inner {
     width: 100%
   }
+}
+
+
+
+
+
+.flip-card {
+  position: relative;
+  display: block;
+}
+
+.flip-card__image {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+  aspect-ratio: 1/1;
+}
+
+.flip-card-back {
+  display: flex;
+  flex-direction: row;
+  justify-content:flex-start;
+  align-items:end;
+  gap: 5px;
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
+}
+
+.flip-card:hover .flip-card-back {
+  opacity: 1;
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+ 
+.flip-card-front {
+  position: relative;
+  color: black;
+}
+
+.artist__photo {
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  margin-bottom: 17px;
+  margin-left: 20px;
+  border: 1px solid white;
+}
+
+.artist__text-container {
+  margin-bottom: 22.5px;
+}
+
+.artist__text {
+  margin: 0;
+  padding: 0;
+  margin-bottom: 2px;
+  margin-left: 15px;
+  font-size: 1.1em;
+  color: white;
+}
+
+.artist__button {
+  padding-inline: 10px;
+  padding-block: 3px;
+  margin-left: 15px;
+  font-size: 1.1em;
+  color: white;
+  border-radius: 5px;
+  border:none;
+}
+
+.artist__button:hover {
+  background-color: #1c1a1c;
+}
+
+.flip-card-back:hover {
+  content:'';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 75%);
+  z-index: 2;
+  left: 0;
 }
