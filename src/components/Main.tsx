@@ -20,9 +20,9 @@ export const Main = () => {
     useEffect(() => {
         fetch(`https://api.unsplash.com/search/photos?page=1&query=${search}&client_id=${process.env.REACT_APP_ACCESS_KEY}`)
           .then(response => response.json())
-
           .then(response => setData(response.results))
     }, [search]);
+
 
     const historyObj : string[] = [];
 
@@ -32,19 +32,33 @@ export const Main = () => {
         setSearch(searchBar.current!.value)
     }
 
-    const historyPush = () => {
-      console.log('home page RUN!')
+    document.onkeydown = event => {
+      if (event.key === 'Enter') {
+        if (searchBar.current!.value) {
+          window.localStorage.setItem('searchHistory', JSON.stringify([...historyObj, searchBar.current!.value]))
+          setSearch(searchBar.current!.value)
+        }
+      }
+    };
+
+    const HistoryPush = () => {
         const history = window.localStorage.getItem('searchHistory')
         if (history) {
             JSON.parse(history).forEach((prevSearch : string )=> historyObj.push(prevSearch))
         }
+
         const { state } = useLocation();
-        if (state) {
-          setSearch(state)
-        }
+        useEffect(() => {
+          if (state) {
+            fetch(`https://api.unsplash.com/search/photos?page=1&query=${state}&client_id=${process.env.REACT_APP_ACCESS_KEY}`)
+          .then(response => response.json())
+          .then(response => setData(response.results))
+          } 
+        }, [state])
+        
     }
 
-    historyPush();
+    HistoryPush();
     return (
         <>  
             <div className="main-container">
@@ -64,6 +78,7 @@ export const Main = () => {
                 <div className="main-container__images" id="main-container__images">
                     {data && data.map((photo: Photo) => {
                         return(
+                          <div className="test">
                           <Link key={photo.id} className="flip-card" to={{pathname: `${photo.id}`}} state = {{data: photo}}>
                               <img className="flip-card__image" src={photo.urls.small} alt={photo.alt_description} />
                           
@@ -75,21 +90,16 @@ export const Main = () => {
 
                                 <div className="artist__text-container">
                                   <p className="artist__text"> Photographer: { photo.user.name } </p>
-                                  <button className="artist__button"><a href={ photo.user.links.html }>Link to profile</a></button>
+
+                                
                                 </div>                                  
                               </div>
                           </Link>
+                          <button className="artist__button"><a href={ photo.user.links.html }>Link to profile</a></button>
+                          </div>
                     )})}
                 </div>
             </div>
         </>
     );
 }
-/*
-<div key={photo.id} className="flip-card">    
-                                  <img className="main-container__photo" src={photo.urls.small} alt={photo.alt_description} />
-                                  <div className="glow-wrap">
-                                    <i className="glow"></i>
-                                  </div>
-                                </div>
-                                */

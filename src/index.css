@@ -291,7 +291,34 @@ input[type=text] {
   transition: opacity 300ms ease-in-out;
 }
 
-.flip-card:hover .flip-card-back {
+.test {
+  margin-bottom: -25px;
+}
+
+.tag__button {
+  width: 130px;
+  padding-inline: 10px;
+  padding-block: 5px;
+  height: fit-content;
+}
+
+.artist__button {
+  position: relative;
+  bottom: 50px;
+  left: 78px;
+  padding-inline: 10px;
+  padding-block: 3px;
+  margin-left: 15px;
+  font-size: 1.1em;
+  color: white;
+  border-radius: 5px;
+  z-index: 2;
+  border:none;
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
+}
+
+.test:hover .flip-card-back, .test:hover .artist__button {
   opacity: 1;
 }
 
@@ -318,26 +345,16 @@ input[type=text] {
 }
 
 .artist__text-container {
-  margin-bottom: 22.5px;
+  margin-bottom: 46px;
 }
 
 .artist__text {
   margin: 0;
   padding: 0;
-  margin-bottom: 2px;
+  margin-bottom: 7px;
   margin-left: 15px;
   font-size: 1.1em;
   color: white;
-}
-
-.artist__button {
-  padding-inline: 10px;
-  padding-block: 3px;
-  margin-left: 15px;
-  font-size: 1.1em;
-  color: white;
-  border-radius: 5px;
-  border:none;
 }
 
 .artist__button:hover {
