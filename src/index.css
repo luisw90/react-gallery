@@ -285,7 +285,7 @@ input[type=text] {
   display: flex;
   flex-direction: row;
   justify-content:flex-start;
-  align-items:end;
+  align-items:flex-end;
   gap: 5px;
   opacity: 0;
   transition: opacity 300ms ease-in-out;
