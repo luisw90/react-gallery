@@ -78,8 +78,8 @@ export const Main = () => {
                 <div className="main-container__images" id="main-container__images">
                     {data && data.map((photo: Photo) => {
                         return(
-                          <div className="test">
-                          <Link key={photo.id} className="flip-card" to={{pathname: `${photo.id}`}} state = {{data: photo}}>
+                          <div className="test" key={photo.id}>
+                          <Link className="flip-card" to={{pathname: `${photo.id}`}} state = {{data: photo}}>
                               <img className="flip-card__image" src={photo.urls.small} alt={photo.alt_description} />
                           
                               <div className="flip-card-back">
