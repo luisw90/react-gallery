@@ -16,7 +16,7 @@ export const PhotoPage = () => {
                 {state.data.tags.map((tag : any) => {
                 return (
                     <Link to={{pathname: '/'}} state = {tag.title} key={tag.title}>
-                        <button className="main-container__buttons__btn" key={tag.title}>{tag.title}</button>
+                        <button className="main-container__buttons__btn tag__button" key={tag.title}>{tag.title}</button>
                     </Link>
                 )
                 })}
