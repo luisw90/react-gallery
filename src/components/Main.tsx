@@ -1,12 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router"
 
 type Photo = {
     id: string,
     urls: { small:string },
     alt_description: string,
-    user: { links: { html: string }, name: string},
+    user: { links: { html: string }, name: string, profile_image: { medium: string } },
     links: { html: string},
+
   };
 
 export const Main = () => {
@@ -18,6 +20,7 @@ export const Main = () => {
     useEffect(() => {
         fetch(`https://api.unsplash.com/search/photos?page=1&query=${search}&client_id=${process.env.REACT_APP_ACCESS_KEY}`)
           .then(response => response.json())
+
           .then(response => setData(response.results))
     }, [search]);
 
@@ -28,11 +31,16 @@ export const Main = () => {
         window.localStorage.setItem('searchHistory', JSON.stringify([...historyObj, searchBar.current!.value]))
         setSearch(searchBar.current!.value)
     }
-    
+
     const historyPush = () => {
+      console.log('home page RUN!')
         const history = window.localStorage.getItem('searchHistory')
         if (history) {
             JSON.parse(history).forEach((prevSearch : string )=> historyObj.push(prevSearch))
+        }
+        const { state } = useLocation();
+        if (state) {
+          setSearch(state)
         }
     }
 
@@ -54,25 +62,34 @@ export const Main = () => {
                 <div>
                 </div>
                 <div className="main-container__images" id="main-container__images">
-                    {data && data.map((photo: Photo, index: number) => {
+                    {data && data.map((photo: Photo) => {
                         return(
-                            <Link to={{pathname: `${photo.id}`}} state = {{data: photo}}>
-                                <div key={photo.id} className="flip-card">
-                                    <div className="flip-card-inner">
-                                        <div className="flip-card-front">
-                                                <img className="main-container__photo" src={photo.urls.small} alt={photo.alt_description} />
-                                        </div>
-                                        <div className="flip-card-back">
-                                            <h1><a href={ photo.user.links.html }>Link to Photographers profile</a></h1>
-                                            <p> { photo.user.name } </p>
-                                            <p><a href={ photo.links.html }>Link to Photo</a></p>
-                                        </div>
-                                    </div>
+                          <Link key={photo.id} className="flip-card" to={{pathname: `${photo.id}`}} state = {{data: photo}}>
+                              <img className="flip-card__image" src={photo.urls.small} alt={photo.alt_description} />
+                          
+                              <div className="flip-card-back">
+                                
+                                <div>
+                                  <img className="artist__photo" src={photo.user.profile_image.medium} alt={photo.alt_description} />
                                 </div>
-                            </Link>
+
+                                <div className="artist__text-container">
+                                  <p className="artist__text"> Photographer: { photo.user.name } </p>
+                                  <button className="artist__button"><a href={ photo.user.links.html }>Link to profile</a></button>
+                                </div>                                  
+                              </div>
+                          </Link>
                     )})}
                 </div>
             </div>
         </>
     );
 }
+/*
+<div key={photo.id} className="flip-card">    
+                                  <img className="main-container__photo" src={photo.urls.small} alt={photo.alt_description} />
+                                  <div className="glow-wrap">
+                                    <i className="glow"></i>
+                                  </div>
+                                </div>
+                                */

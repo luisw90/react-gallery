@@ -1,9 +1,9 @@
 import { useLocation } from "react-router";
+import { Link } from "react-router-dom";
 
 export const PhotoPage = () => {
-
+ 
  const { state } = useLocation();
- console.log(state.data)
  return (
     <div className="item">
         <div className="item__container">
@@ -15,7 +15,9 @@ export const PhotoPage = () => {
                 <div className="item__Button-container">
                 {state.data.tags.map((tag : any) => {
                 return (
+                    <Link to={{pathname: '/'}} state = {tag.title} key={tag.title}>
                         <button className="main-container__buttons__btn" key={tag.title}>{tag.title}</button>
+                    </Link>
                 )
                 })}
                 </div>
