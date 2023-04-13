@@ -9,6 +9,9 @@ The API used is Unsplash.
 Routing was done using both React Router and by passing "state" information through the React Router Links, to allow for dynamic page generation.
 
 
+## Tech Stack
+This project was built with...
+- React JS
 
 ## Authors
 
