@@ -12,6 +12,7 @@ Routing was done using both React Router and by passing "state" information thro
 ## Tech Stack
 This project was built with...
 - React JS
+- React Router
 
 ## Authors
 
