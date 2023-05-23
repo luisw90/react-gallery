@@ -1,12 +1,11 @@
 # React Picture Gallery
 
 This project was built as part of a mob-programming exercise with the below listed programmers. 
-
-It was built using Create-React-App, with the typescript template. 
-
-The API used is Unsplash. 
-
+It was built using Create-React-App, with the typescript template. The API used is Unsplash. 
 Routing was done using both React Router and by passing "state" information through the React Router Links, to allow for dynamic page generation.
+
+
+https://github.com/luisw90/react-gallery/assets/116962905/0e1a7d2b-25cf-455b-9324-ddeadab24145
 
 
 ## Tech Stack
